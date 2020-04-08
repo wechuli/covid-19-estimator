@@ -9,6 +9,10 @@
     "lint": "eslint ./src/",
     "test": "jest --watch --runInBand"
   },
+  "jest": {
+    "testEnvironment": "node",
+    "verbose": true
+  },
   "dependencies": {
     "on-covid-19": "^0.1.3"
   },
