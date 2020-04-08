@@ -1,4 +1,4 @@
-import { impact, severeImpact } from './constants';
+import { impact, severeImpact, periodTypeConstants } from './constants';
 import { currentlyInfectedCalc } from './calculators';
 
 const covid19ImpactEstimator = (data) => {
