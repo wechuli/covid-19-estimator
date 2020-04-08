@@ -60,6 +60,19 @@ test('should return the number of infected by the given time', () => {
   ).toBe(infectionsByRequestedTime);
 });
 
+test('should return the total population if the infections by requested time exceed the population', () => {
+  const currentlyInfected = 100000;
+  const noOfDays = 28;
+  const population = 1000000;
+
+//   const infectionsByRequestedTime =
+//     currentlyInfected * Math.pow(2, Math.floor(noOfDays / 3));
+
+  expect(
+    infectionsByRequestedTimeCalc(currentlyInfected, noOfDays, population)
+  ).toBe(population);
+});
+
 test('should return correct number of severe positive cases', () => {
   const infectionsByRequestedTime = 1000000;
   const severeCasesByRequestedTime = 0.15 * infectionsByRequestedTime;
