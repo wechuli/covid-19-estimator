@@ -48,8 +48,76 @@ test('should return the population if those infected is greater than the populat
 });
 
 test('should return the number of infected by the given time', () => {
-    const currentlyInfected = 10000;
-    const noOfDays = 10;
-    const population = 1000000;
+  const currentlyInfected = 10000;
+  const noOfDays = 6;
+  const population = 1000000;
 
+  const infectionsByRequestedTime =
+    currentlyInfected * Math.pow(2, noOfDays / 3);
+
+  expect(
+    infectionsByRequestedTimeCalc(currentlyInfected, noOfDays, population)
+  ).toBe(infectionsByRequestedTime);
+});
+
+test('should return correct number of severe positive cases', () => {
+  const infectionsByRequestedTime = 1000000;
+  const severeCasesByRequestedTime = 0.15 * infectionsByRequestedTime;
+
+  expect(severeCasesByRequestedTimeCalc(infectionsByRequestedTime)).toBe(
+    severeCasesByRequestedTime
+  );
+});
+
+test('should return the correct number of cases that would require ICU', () => {
+  const infectionsByRequestedTime = 1000000;
+  const casesForICUByRequestedTime = 0.05 * infectionsByRequestedTime;
+
+  expect(casesForICUByRequestedTimeCalc(infectionsByRequestedTime)).toBe(
+    casesForICUByRequestedTime
+  );
+});
+
+test('should return the correct number of cases that would require a ventilator', () => {
+  const infectionsByRequestedTime = 1000000;
+  const casesForVentilatorsByRequestedTime = 0.02 * infectionsByRequestedTime;
+
+  expect(
+    casesForVentilatorsByRequestedTimeCalc(infectionsByRequestedTime)
+  ).toBe(casesForVentilatorsByRequestedTime);
+});
+
+test('should determine how many beds are available for severe cases', () => {
+  const totalHospitalBeds = 1000;
+  const severeCasesByRequestedTime = 1000;
+  const availableHospitalBeds = 0.35 * totalHospitalBeds;
+
+  expect(
+    hospitalBedsByRequestedTimeCalc(
+      severeCasesByRequestedTime,
+      totalHospitalBeds
+    )
+  ).toBe(availableHospitalBeds - severeCasesByRequestedTime);
+});
+
+test('should correctly calculate the total dollars in flight', () => {
+  const infectionsByRequestedTime = 10000;
+  const avgDailyIncomeInUSD = 5;
+  const avgDailyIncomePopulation = 0.65;
+
+  const region = {
+    name: 'Africa',
+    avgDailyIncomeInUSD,
+    avgDailyIncomePopulation
+  };
+  const noOfDays = 30;
+  const dollarsInFlight =
+    infectionsByRequestedTime *
+    avgDailyIncomeInUSD *
+    avgDailyIncomePopulation *
+    noOfDays;
+
+  expect(dollarsInFlightCalc(infectionsByRequestedTime, region, noOfDays)).toBe(
+    dollarsInFlight
+  );
 });

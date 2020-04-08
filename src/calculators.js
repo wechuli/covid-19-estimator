@@ -1,4 +1,5 @@
-//import { impact, severeImpact } from './constants';
+/* eslint-disable linebreak-style */
+// import { impact, severeImpact } from './constants';
 const { impact, severeImpact, periodTypeConstants } = require('./constants');
 
 // currently infected depending on type - impact or severImpact
@@ -38,8 +39,7 @@ function hospitalBedsByRequestedTimeCalc(
   totalHospitalBeds
 ) {
   const availableHospitalBeds = Math.floor(0.35 * totalHospitalBeds);
-  const hospitalBedsByRequestedTime =
-    availableHospitalBeds - severeCasesByRequestedTime;
+  const hospitalBedsByRequestedTime = availableHospitalBeds - severeCasesByRequestedTime;
   return hospitalBedsByRequestedTime;
 }
 
@@ -63,22 +63,21 @@ function casesForVentilatorsByRequestedTimeCalc(infectionsByRequestedTime) {
 // dollars in flight
 function dollarsInFlightCalc(infectionsByRequestedTime, region, noOfDays) {
   const { avgDailyIncomeInUSD, avgDailyIncomePopulation } = region;
-  const dollarsInFlight =
-    infectionsByRequestedTime *
-    avgDailyIncomeInUSD *
-    avgDailyIncomePopulation *
-    noOfDays;
+  const dollarsInFlight = infectionsByRequestedTime
+    * avgDailyIncomeInUSD
+    * avgDailyIncomePopulation
+    * noOfDays;
   return dollarsInFlight;
 }
 
 function getNumberOfDays(timeToElapse, periodType) {
   if (periodType === periodTypeConstants.months) {
     return timeToElapse * 30;
-  } else if (periodType == periodTypeConstants.weeks) {
-    return timeToElapse * 7;
-  } else {
-    return timeToElapse;
   }
+  if (periodType === periodTypeConstants.weeks) {
+    return timeToElapse * 7;
+  }
+  return timeToElapse;
 }
 
 module.exports = {
