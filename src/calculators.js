@@ -2,24 +2,24 @@
 const { impact, severeImpact, periodTypeConstants } = require('./constants');
 
 // currently infected depending on type - impact or severImpact
-function currentlyInfectedCalc(reportedCases, type) {
+function currentlyInfectedCalc(reportedCases, type, population) {
   if (type === severeImpact) {
-    return reportedCases * 50;
+    return Math.min(reportedCases * 50, population);
   }
-  return reportedCases * 10;
+  return Math.min(reportedCases * 10, population);
 }
 
 // project infections given the number of days
 function infectionsByRequestedTimeCalc(
-  reportedCases,
-  type,
-  timeToElapse,
-  periodType
+  currentlyInfected,
+  noOfDays,
+  population
 ) {
-  const currentlyInfected = currentlyInfectedCalc(reportedCases, type);
-  const timeInDays = getNumberOfDays(timeToElapse, periodType);
-  const factor = Math.floor(timeInDays / 3);
-  const infectionsByRequestedTime = currentlyInfected * Math.pow(2, factor);
+  const factor = Math.floor(noOfDays / 3);
+  const infectionsByRequestedTime = Math.min(
+    currentlyInfected * Math.pow(2, factor),
+    population
+  );
   return infectionsByRequestedTime;
 }
 
@@ -75,3 +75,13 @@ function getNumberOfDays(timeToElapse, periodType) {
   }
 }
 
+module.exports = {
+  getNumberOfDays,
+  dollarsInFlightCalc,
+  casesForVentilatorsByRequestedTimeCalc,
+  casesForICUByRequestedTimeCalc,
+  hospitalBedsByRequestedTimeCalc,
+  severeCasesByRequestedTimeCalc,
+  infectionsByRequestedTimeCalc,
+  currentlyInfectedCalc
+};

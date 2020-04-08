@@ -1,21 +1,27 @@
-import { impact, severeImpact, periodTypeConstants } from './constants';
-import { currentlyInfectedCalc } from './calculators';
+const { impact, severeImpact } = require('./constants');
+const { aggregateResults } = require('./aggregators');
 
+const rawData = {
+  region: {
+    name: 'Africa',
+    avgAge: 19.7,
+    avgDailyIncomeInUSD: 5,
+    avgDailyIncomePopulation: 0.71
+  },
+  periodType: 'days',
+  timeToElapse: 58,
+  reportedCases: 674,
+  population: 66622705,
+  totalHospitalBeds: 1380614
+};
 const covid19ImpactEstimator = (data) => {
-  const {
-    region,
-    periodType,
-    timeToElapse,
-    reportedCases,
-    population,
-    totalHospitalBeds
-  } = data;
-
   return {
     data,
-    impact: {},
-    severeImpact: {}
+    impact: aggregateResults(data, impact),
+    severeImpact: aggregateResults(data, severeImpact)
   };
 };
 
-export default covid19ImpactEstimator;
+console.log(covid19ImpactEstimator(rawData));
+
+//export default covid19ImpactEstimator;
