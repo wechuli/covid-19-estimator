@@ -7,6 +7,7 @@ const covid19ImpactEstimator = (data) => {
     population,
     totalHospitalBeds
   } = data;
+  
   return {
     data,
     impact: {},
