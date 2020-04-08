@@ -22,10 +22,15 @@ function aggregateResults(data, type) {
     totalHospitalBeds
   } = data;
   const noOfDays = getNumberOfDays(timeToElapse, periodType);
-  const currentlyInfected = currentlyInfectedCalc(reportedCases, type);
+  const currentlyInfected = currentlyInfectedCalc(
+    reportedCases,
+    type,
+    population
+  );
   const infectionsByRequestedTime = infectionsByRequestedTimeCalc(
     currentlyInfected,
-    noOfDays
+    noOfDays,
+    population
   );
   const severeCasesByRequestedTime = severeCasesByRequestedTimeCalc(
     infectionsByRequestedTime

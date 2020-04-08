@@ -9,7 +9,7 @@ const rawData = {
     avgDailyIncomePopulation: 0.71
   },
   periodType: 'days',
-  timeToElapse: 58,
+  timeToElapse: 8,
   reportedCases: 674,
   population: 66622705,
   totalHospitalBeds: 1380614

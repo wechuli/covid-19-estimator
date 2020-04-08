@@ -25,7 +25,9 @@ function infectionsByRequestedTimeCalc(
 
 // severe cases that require hospitalization
 function severeCasesByRequestedTimeCalc(infectionsByRequestedTime) {
-  const severeCasesByRequestedTime = 0.15 * infectionsByRequestedTime;
+  const severeCasesByRequestedTime = Math.ceil(
+    0.15 * infectionsByRequestedTime
+  );
 
   return severeCasesByRequestedTime;
 }
@@ -35,7 +37,7 @@ function hospitalBedsByRequestedTimeCalc(
   severeCasesByRequestedTime,
   totalHospitalBeds
 ) {
-  const availableHospitalBeds = 0.35 * totalHospitalBeds;
+  const availableHospitalBeds = Math.floor(0.35 * totalHospitalBeds);
   const hospitalBedsByRequestedTime =
     availableHospitalBeds - severeCasesByRequestedTime;
   return hospitalBedsByRequestedTime;
@@ -44,13 +46,17 @@ function hospitalBedsByRequestedTimeCalc(
 // cases requiring ICU
 
 function casesForICUByRequestedTimeCalc(infectionsByRequestedTime) {
-  const casesForICUByRequestedTime = 0.05 * infectionsByRequestedTime;
+  const casesForICUByRequestedTime = Math.ceil(
+    0.05 * infectionsByRequestedTime
+  );
   return casesForICUByRequestedTime;
 }
 
 // cases requiring ventilators
 function casesForVentilatorsByRequestedTimeCalc(infectionsByRequestedTime) {
-  const casesForVentilatorsByRequestedTime = 0.02 * infectionsByRequestedTime;
+  const casesForVentilatorsByRequestedTime = Math.ceil(
+    0.02 * infectionsByRequestedTime
+  );
   return casesForVentilatorsByRequestedTime;
 }
 
