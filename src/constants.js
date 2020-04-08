@@ -1,8 +1,14 @@
-export const impact = 'impact';
-export const severeImpact = 'severeImpact';
+const impact = 'impact';
+const severeImpact = 'severeImpact';
 
-export const periodTypeConstants = {
+const periodTypeConstants = {
   days: 'days',
   weeks: 'weeks',
   months: 'months'
+};
+
+module.exports = {
+  impact,
+  severeImpact,
+  periodTypeConstants
 };
