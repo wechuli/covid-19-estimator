@@ -6,3 +6,8 @@ export function currentlyInfectedCalc(reportedCases, type) {
   }
   return reportedCases * 10;
 }
+
+
+export function infectionsByRequestedTimeCalc(reportedCases,type,timeV,timeValueType){
+
+}
