@@ -75,5 +75,3 @@ function getNumberOfDays(timeToElapse, periodType) {
   }
 }
 
-console.log(getNumberOfDays(5, 'days'));
-console.log(infectionsByRequestedTimeCalc(1, 'impact', 9, 'days'));
