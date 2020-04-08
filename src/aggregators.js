@@ -1,4 +1,3 @@
-const { impact, severeImpact, periodTypeConstants } = require('./constants');
 const {
   getNumberOfDays,
   dollarsInFlightCalc,
