@@ -54,6 +54,17 @@ function casesForVentilatorsByRequestedTimeCalc(infectionsByRequestedTime) {
   return casesForVentilatorsByRequestedTime;
 }
 
+// dollars in flight
+function dollarsInFlightCalc(infectionsByRequestedTime, region, noOfDays) {
+  const { avgDailyIncomeInUSD, avgDailyIncomePopulation } = region;
+  const dollarsInFlight =
+    infectionsByRequestedTime *
+    avgDailyIncomeInUSD *
+    avgDailyIncomePopulation *
+    noOfDays;
+  return dollarsInFlight;
+}
+
 function getNumberOfDays(timeToElapse, periodType) {
   if (periodType === periodTypeConstants.months) {
     return timeToElapse * 30;
