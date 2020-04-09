@@ -1,3 +1,4 @@
+/*
 const { aggregateResults } = require('./aggregators');
 const {impact,severeImpact} = require('./constants');
 
@@ -18,3 +19,5 @@ const sampleData = {
 
 console.log(aggregateResults(sampleData,impact));
 console.log(aggregateResults(sampleData,severeImpact));
+
+*/
