@@ -46,7 +46,7 @@ function hospitalBedsByRequestedTimeCalc(
   severeCasesByRequestedTime,
   totalHospitalBeds
 ) {
-  const availableHospitalBeds = Math.floor(0.35 * totalHospitalBeds);
+  const availableHospitalBeds = Math.ceil(0.35 * totalHospitalBeds);
   const hospitalBedsByRequestedTime = availableHospitalBeds - severeCasesByRequestedTime;
   return hospitalBedsByRequestedTime;
 }
