@@ -8,7 +8,7 @@ function currentlyInfectedCalc(reportedCases, type, population) {
   //   return Math.min(reportedCases * 50, population);
   // }
   // return Math.min(reportedCases * 10, population);
-  console.log(population);
+  //console.log(population);
   if (type === severeImpact) {
     return reportedCases * 50;
   }
@@ -26,7 +26,7 @@ function infectionsByRequestedTimeCalc(
   //   currentlyInfected * (2 ** factor),
   //   population
   // );
-  console.log(population);
+  //console.log(population);
   const infectionsByRequestedTime = currentlyInfected * (2 ** factor);
 
   return infectionsByRequestedTime;
