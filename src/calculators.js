@@ -21,7 +21,7 @@ function infectionsByRequestedTimeCalc(
   noOfDays,
   population
 ) {
-  const factor = Math.floor(noOfDays / 3);
+  const factor = Math.trunc(noOfDays / 3);
   // const infectionsByRequestedTime = Math.min(
   //   currentlyInfected * (2 ** factor),
   //   population
@@ -34,7 +34,7 @@ function infectionsByRequestedTimeCalc(
 
 // severe cases that require hospitalization
 function severeCasesByRequestedTimeCalc(infectionsByRequestedTime) {
-  const severeCasesByRequestedTime = Math.ceil(
+  const severeCasesByRequestedTime = Math.trunc(
     0.15 * infectionsByRequestedTime
   );
 
@@ -46,7 +46,7 @@ function hospitalBedsByRequestedTimeCalc(
   severeCasesByRequestedTime,
   totalHospitalBeds
 ) {
-  const availableHospitalBeds = Math.ceil(0.35 * totalHospitalBeds);
+  const availableHospitalBeds = Math.trunc(0.35 * totalHospitalBeds);
   const hospitalBedsByRequestedTime = availableHospitalBeds - severeCasesByRequestedTime;
   return hospitalBedsByRequestedTime;
 }
@@ -54,7 +54,7 @@ function hospitalBedsByRequestedTimeCalc(
 // cases requiring ICU
 
 function casesForICUByRequestedTimeCalc(infectionsByRequestedTime) {
-  const casesForICUByRequestedTime = Math.floor(
+  const casesForICUByRequestedTime = Math.trunc(
     0.05 * infectionsByRequestedTime
   );
   return casesForICUByRequestedTime;
@@ -62,7 +62,7 @@ function casesForICUByRequestedTimeCalc(infectionsByRequestedTime) {
 
 // cases requiring ventilators
 function casesForVentilatorsByRequestedTimeCalc(infectionsByRequestedTime) {
-  const casesForVentilatorsByRequestedTime = Math.floor(
+  const casesForVentilatorsByRequestedTime = Math.trunc(
     0.02 * infectionsByRequestedTime
   );
   return casesForVentilatorsByRequestedTime;
