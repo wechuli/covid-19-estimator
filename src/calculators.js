@@ -18,7 +18,7 @@ function infectionsByRequestedTimeCalc(
 ) {
   const factor = Math.floor(noOfDays / 3);
   const infectionsByRequestedTime = Math.min(
-    currentlyInfected * Math.pow(2, factor),
+    currentlyInfected * (2 ** factor),
     population
   );
   return infectionsByRequestedTime;
