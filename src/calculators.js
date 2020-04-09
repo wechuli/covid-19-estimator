@@ -39,8 +39,7 @@ function hospitalBedsByRequestedTimeCalc(
   totalHospitalBeds
 ) {
   const availableHospitalBeds = Math.floor(0.35 * totalHospitalBeds);
-  const hospitalBedsByRequestedTime =
-    availableHospitalBeds - severeCasesByRequestedTime;
+  const hospitalBedsByRequestedTime = availableHospitalBeds - severeCasesByRequestedTime;
   return hospitalBedsByRequestedTime;
 }
 
@@ -64,11 +63,7 @@ function casesForVentilatorsByRequestedTimeCalc(infectionsByRequestedTime) {
 // dollars in flight
 function dollarsInFlightCalc(infectionsByRequestedTime, region, noOfDays) {
   const { avgDailyIncomeInUSD, avgDailyIncomePopulation } = region;
-  const dollarsInFlight =
-    infectionsByRequestedTime *
-    avgDailyIncomeInUSD *
-    avgDailyIncomePopulation *
-    noOfDays;
+  const dollarsInFlight = infectionsByRequestedTime * avgDailyIncomeInUSD * avgDailyIncomePopulation * noOfDays;
   return dollarsInFlight;
 }
 
