@@ -9,9 +9,6 @@ const {
   currentlyInfectedCalc
 } = require('./calculators');
 
-// given the piece of data and type(impact or severe) ouput required, produce a report object with 
-//relevant fields
-
 function aggregateResults(data, type) {
   const {
     region,
