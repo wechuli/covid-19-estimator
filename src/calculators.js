@@ -4,10 +4,15 @@ const { severeImpact, periodTypeConstants } = require('./constants');
 
 // currently infected depending on type - impact or severImpact
 function currentlyInfectedCalc(reportedCases, type, population) {
+  // if (type === severeImpact) {
+  //   return Math.min(reportedCases * 50, population);
+  // }
+  // return Math.min(reportedCases * 10, population);
+console.log(population);
   if (type === severeImpact) {
-    return Math.min(reportedCases * 50, population);
+    return reportedCases * 50;
   }
-  return Math.min(reportedCases * 10, population);
+  return reportedCases * 10;
 }
 
 // project infections given the number of days
@@ -17,10 +22,13 @@ function infectionsByRequestedTimeCalc(
   population
 ) {
   const factor = Math.floor(noOfDays / 3);
-  const infectionsByRequestedTime = Math.min(
-    currentlyInfected * (2 ** factor),
-    population
-  );
+  // const infectionsByRequestedTime = Math.min(
+  //   currentlyInfected * (2 ** factor),
+  //   population
+  // );
+  console.log(population);
+  const infectionsByRequestedTime = currentlyInfected * (2 ** factor);
+
   return infectionsByRequestedTime;
 }
 
