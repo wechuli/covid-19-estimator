@@ -53,7 +53,7 @@ test('should return the number of infected by the given time', () => {
   const population = 1000000;
 
   const infectionsByRequestedTime =
-    currentlyInfected * Math.pow(2, noOfDays / 3);
+    currentlyInfected * Math.pow(2, Math.floor(noOfDays / 3));
 
   expect(
     infectionsByRequestedTimeCalc(currentlyInfected, noOfDays, population)
@@ -65,8 +65,8 @@ test('should return the total population if the infections by requested time exc
   const noOfDays = 28;
   const population = 1000000;
 
-//   const infectionsByRequestedTime =
-//     currentlyInfected * Math.pow(2, Math.floor(noOfDays / 3));
+  //   const infectionsByRequestedTime =
+  //     currentlyInfected * Math.pow(2, Math.floor(noOfDays / 3));
 
   expect(
     infectionsByRequestedTimeCalc(currentlyInfected, noOfDays, population)

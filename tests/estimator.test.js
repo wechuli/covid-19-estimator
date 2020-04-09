@@ -1,40 +1,30 @@
-const {
-  getNumberOfDays,
-  dollarsInFlightCalc,
-  casesForVentilatorsByRequestedTimeCalc,
-  casesForICUByRequestedTimeCalc,
-  hospitalBedsByRequestedTimeCalc,
-  severeCasesByRequestedTimeCalc,
-  infectionsByRequestedTimeCalc,
-  currentlyInfectedCalc
-} = require('../src/calculators');
+const { aggregateResults } = require('../src/aggregators');
+const { impact, severeImpact } = require('../src/constants');
+const { sampleData1 } = require('./fixtures/samples');
+const covid19ImpactEstimator = require('../src/estimator');
 
-const sample1 = {
-  region: {
-    name: 'Africa',
-    avgAge: 19.7,
-    avgDailyIncomeInUSD: 5,
-    avgDailyIncomePopulation: 0.71
-  },
-  periodType: 'days',
-  timeToElapse: 8,
-  reportedCases: 674,
-  population: 66622705,
-  totalHospitalBeds: 1380614
-};
+test('should correctly return result object', () => {
+  const results = {
+    data: sampleData1,
+    impact: {
+      currentlyInfected: 1790,
+      infectionsByRequestedTime: 28640,
+      severeCasesByRequestedTime: 4296,
+      hospitalBedsByRequestedTime: 20204,
+      casesForICUByRequestedTime: 1432,
+      casesForVentilatorsByRequestedTime: 573,
+      dollarsInFlight: 288691.2
+    },
+    severeImpact: {
+      currentlyInfected: 8950,
+      infectionsByRequestedTime: 143200,
+      severeCasesByRequestedTime: 21480,
+      hospitalBedsByRequestedTime: 3020,
+      casesForICUByRequestedTime: 7160,
+      casesForVentilatorsByRequestedTime: 2864,
+      dollarsInFlight: 1443456
+    }
+  };
 
-const sample2 = {
-  region: {
-    name: 'Kenya',
-    avgAge: 19,
-    avgDailyIncomeInUSD: 5,
-    avgDailyIncomePopulation: 0.65
-  },
-  periodType: 'weeks',
-  timeToElapse: 3,
-  reportedCases: 674,
-  population: 66622705,
-  totalHospitalBeds: 1380614
-}
-
-test('should ', () => {});
+  expect(covid19ImpactEstimator(sampleData1)).toEqual(results);
+});
