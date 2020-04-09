@@ -54,7 +54,7 @@ function hospitalBedsByRequestedTimeCalc(
 // cases requiring ICU
 
 function casesForICUByRequestedTimeCalc(infectionsByRequestedTime) {
-  const casesForICUByRequestedTime = Math.ceil(
+  const casesForICUByRequestedTime = Math.floor(
     0.05 * infectionsByRequestedTime
   );
   return casesForICUByRequestedTime;
@@ -62,7 +62,7 @@ function casesForICUByRequestedTimeCalc(infectionsByRequestedTime) {
 
 // cases requiring ventilators
 function casesForVentilatorsByRequestedTimeCalc(infectionsByRequestedTime) {
-  const casesForVentilatorsByRequestedTime = Math.ceil(
+  const casesForVentilatorsByRequestedTime = Math.floor(
     0.02 * infectionsByRequestedTime
   );
   return casesForVentilatorsByRequestedTime;
