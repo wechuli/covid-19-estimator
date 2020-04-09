@@ -73,7 +73,7 @@ function dollarsInFlightCalc(infectionsByRequestedTime, region, noOfDays) {
   const { avgDailyIncomeInUSD, avgDailyIncomePopulation } = region;
   const avgDailyIncomePerPopulation = avgDailyIncomeInUSD * avgDailyIncomePopulation;
   const dollarsInFlight = infectionsByRequestedTime * avgDailyIncomePerPopulation * noOfDays;
-  return dollarsInFlight - 2;
+  return dollarsInFlight;
 }
 
 function getNumberOfDays(timeToElapse, periodType) {
