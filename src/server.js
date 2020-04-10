@@ -42,7 +42,7 @@ app.post('/api/v1/on-covid-19/:restype', (req, res) => {
     });
     return res.status(200).send(resultXML);
   }
-  res.status(200).json(results);
+  return res.status(200).json(results);
 });
 
 app.get('/api/v1/on-covid-19/logs', (req, res) => {
