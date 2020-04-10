@@ -46,9 +46,9 @@ function hospitalBedsByRequestedTimeCalc(
   severeCasesByRequestedTime,
   totalHospitalBeds
 ) {
-  const availableHospitalBeds = Math.ceil(0.35 * totalHospitalBeds);
+  const availableHospitalBeds = 0.35 * totalHospitalBeds;
   const hospitalBedsByRequestedTime = availableHospitalBeds - severeCasesByRequestedTime;
-  return hospitalBedsByRequestedTime;
+  return Math.trunc(hospitalBedsByRequestedTime);
 }
 
 // cases requiring ICU
