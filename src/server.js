@@ -24,14 +24,20 @@ app.use(
 
 const PORT = process.env.PORT || 8000;
 
-app.get('/api/v1/on-covid-19', (req, res) => {
-  const file = fs.readFileSync(path.join(__dirname, 'logs.log'), {
-    encoding: 'utf8'
-  });
-  console.log(estimator);
-  res.setHeader('Content-Type', 'text/plain');
+app.post('/api/v1/on-covid-19', (req, res) => {
+  const result = estimator(req.body);
 
-  res.status(200).send(file);
+  res.status(200).json(result);
+});
+
+app.post('/api/v1/on-covid-19/:restype', (req, res) => {
+  const { restype } = req.params;
+  const result = estimator(req.body);
+
+  if (restype === 'xml') {
+    res.status(200).json(result);
+  }
+  res.status(200).json(result);
 });
 
 app.get('/api/v1/on-covid-19/logs', (req, res) => {
