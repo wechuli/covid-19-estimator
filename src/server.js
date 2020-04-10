@@ -28,7 +28,7 @@ app.get('/api/v1/on-covid-19', (req, res) => {
   const file = fs.readFileSync(path.join(__dirname, 'logs.log'), {
     encoding: 'utf8'
   });
-
+  console.log(estimator)
   res.setHeader('Content-Type', 'text/plain');
 
   res.status(200).send(file);
