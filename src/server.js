@@ -5,6 +5,8 @@ const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
 
+const estimator = require('./estimator');
+
 const app = express();
 
 const accessLogStream = fs.createWriteStream(path.join(__dirname, 'logs.log'), {
@@ -22,7 +24,17 @@ app.use(
 
 const PORT = process.env.PORT || 8000;
 
-app.get('/api/test', (req, res) => {
+app.get('/api/v1/on-covid-19', (req, res) => {
+  const file = fs.readFileSync(path.join(__dirname, 'logs.log'), {
+    encoding: 'utf8'
+  });
+
+  res.setHeader('Content-Type', 'text/plain');
+
+  res.status(200).send(file);
+});
+
+app.get('/api/v1/on-covid-19/logs', (req, res) => {
   const file = fs.readFileSync(path.join(__dirname, 'logs.log'), {
     encoding: 'utf8'
   });
