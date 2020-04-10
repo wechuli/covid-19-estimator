@@ -8,12 +8,37 @@
 </head>
 
 <body>
-    <h1>
-        Hi there
-    </h1>
-    <p>
-        This is a page
-    </p>
+    <form id="predictor">
+        <label for="population">Population</label>
+        <input type="number" name="population" id="population" data-population="population">
+
+        <label for="timeToElapse">Time to Elapse</label>
+        <input type="number" name="timeToElapse" id="timeToElapse" data-time-to-elapse="timeToElapse">
+
+        <label for="reportedCases">Reported Cases</label>
+        <input type="number" name="reportedCases" id="reportedCases" data-reported-cases="reportedCases">
+
+        <label for="totalHospitalBeds">Total Hospital Beds</label>
+        <input type="number" name="totalHospitalBeds" id="totalHospitalBeds"
+            data-total-hospital-beds="totalHospitalBeds">
+
+        <select id="periodType" data-period-type="periodType">
+            <option value="days">Days</option>
+            <option value="weeks">Weeks</option>
+            <option value="months">Months</option>
+
+        </select>
+
+        <button type="submit" data-go- estimate="submit">Submit Data</button>
+    </form>
+
+    <script>
+        const form = document.getElementById('predictor');
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+            alert("You have submited the form");
+        })
+    </script>
 </body>
 
 </html>
