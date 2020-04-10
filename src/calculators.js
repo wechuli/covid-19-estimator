@@ -72,8 +72,8 @@ function casesForVentilatorsByRequestedTimeCalc(infectionsByRequestedTime) {
 function dollarsInFlightCalc(infectionsByRequestedTime, region, noOfDays) {
   const { avgDailyIncomeInUSD, avgDailyIncomePopulation } = region;
   const avgDailyIncomePerPopulation = avgDailyIncomeInUSD * avgDailyIncomePopulation;
-  const dollarsInFlight = infectionsByRequestedTime * avgDailyIncomePerPopulation * noOfDays;
-  return dollarsInFlight;
+  const dollarsInFlight = (infectionsByRequestedTime * avgDailyIncomePerPopulation) / noOfDays;
+  return Math.floor(dollarsInFlight);
 }
 
 function getNumberOfDays(timeToElapse, periodType) {
