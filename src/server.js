@@ -4,6 +4,7 @@ const helmet = require('helmet');
 const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
+const { toXML } = require('jstoxml');
 
 const estimator = require('./estimator');
 
@@ -32,12 +33,16 @@ app.post('/api/v1/on-covid-19', (req, res) => {
 
 app.post('/api/v1/on-covid-19/:restype', (req, res) => {
   const { restype } = req.params;
-  const result = estimator(req.body);
+  const results = estimator(req.body);
 
   if (restype === 'xml') {
-    res.status(200).json(result);
+    res.setHeader('Content-Type', 'application/xml');
+    const resultXML = toXML({
+      root: results
+    });
+    return res.status(200).send(resultXML);
   }
-  res.status(200).json(result);
+  res.status(200).json(results);
 });
 
 app.get('/api/v1/on-covid-19/logs', (req, res) => {

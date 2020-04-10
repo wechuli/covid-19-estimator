@@ -3413,6 +3413,11 @@ jsprim@^1.2.2:
     json-schema "0.2.3"
     verror "1.10.0"
 
+jstoxml@^1.6.5:
+  version "1.6.5"
+  resolved "https://registry.yarnpkg.com/jstoxml/-/jstoxml-1.6.5.tgz#a7a5bf36c60399cb7de1b6089edb2354b97d8c0d"
+  integrity sha512-ozA5AwbLnsm6ft6hHh/raabjwGN7FekIwa42WAFEkF3ZKEeXJLfS6/4GlkbOZglFBfadM75nowCRfhw/ojmd9g==
+
 kind-of@^3.0.2, kind-of@^3.0.3, kind-of@^3.2.0:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-3.2.2.tgz#31ea21a734bab9bbb0f32466d893aea51e4a3c64"
